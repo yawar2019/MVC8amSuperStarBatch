@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "SendMultipleEmployeeToView";
+}
+
+<h2>SendMultipleEmployeeToView</h2>
+
+<table>
+    <tr>
+        <th>EmpId</th>
+        <th>EmpName</th>dss
+        <th>EmpSalary</th>
+       
+    </tr>
+    @foreach (var item in ViewBag.Info)
+    {
+        <tr>
+            <td>@item.EmpId</td>
+            <td>@item.EmpName</td>
+            <td>@item.EmpSalary</td>
+        </tr>
+    }
+
+</table>
