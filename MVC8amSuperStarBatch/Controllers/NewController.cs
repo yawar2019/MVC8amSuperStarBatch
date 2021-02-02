@@ -159,7 +159,7 @@ namespace MVC8amSuperStarBatch.Controllers
             return View(listemp);
         }
 
-        public ActionResult getMultipleModels()
+        public ViewResult getMultipleModels()
         {
             List<EmployeeModel> listemp = new List<EmployeeModel>();
 
@@ -210,6 +210,47 @@ namespace MVC8amSuperStarBatch.Controllers
 
 
             return View(empdeptModel);
+        }
+
+        public RedirectResult gotoYahoo()
+        {
+            return Redirect("http://www.yahoo.in");
+        }
+        public RedirectResult gotoYahoo1()
+        {
+            return Redirect("~/new/gotoYahoo");
+        }
+
+        public string gotoYahoo2(string id)
+        {
+            return id;
+        }
+        public string gotoYahoo3(EmployeeModel emp)
+        {
+            
+            return emp.EmpName;
+        }
+        public RedirectToRouteResult gotoAnotherMethod()
+        {
+            return RedirectToAction("gotoYahoo2",new { id = 1 });
+        }
+        public RedirectToRouteResult gotoAnotherMethod2()
+        {
+            
+
+            EmployeeModel emp3 = new EmployeeModel();
+            emp3.EmpId = 3;
+            emp3.EmpName = "Raveeja";
+            emp3.EmpSalary = 837332;
+
+
+            return RedirectToAction("gotoYahoo3","New", emp3);
+        }
+
+
+        public RedirectToRouteResult gotoAnotherMethod3()
+        {
+            return RedirectToRoute("Default1");
         }
     }
 }

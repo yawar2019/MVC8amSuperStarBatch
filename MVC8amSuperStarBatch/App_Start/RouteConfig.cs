@@ -13,11 +13,21 @@ namespace MVC8amSuperStarBatch
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+           
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{empId}",
                 defaults: new { controller = "Default", action = "Index", empId = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+               name: "Default1",
+               url: "Pizza/Buger",
+               defaults: new { controller = "new", action = "gotoYahoo", empId = UrlParameter.Optional }
+           );
+
+
         }
     }
 }
