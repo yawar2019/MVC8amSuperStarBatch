@@ -1,0 +1,10 @@
+﻿@model List<MVC8amSuperStarBatch.Models.EmployeeModel>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.EmpId</li>
+        <li>@item.EmpName</li>
+        <li>@item.EmpSalary</li>
+    }
+</ul>
+  

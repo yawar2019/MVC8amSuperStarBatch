@@ -1,0 +1,9 @@
+﻿@model List<MVC8amSuperStarBatch.Models.EmployeeModel>
+@{
+    ViewBag.Title = "PartialViewExample";
+}
+
+<h2>PartialViewExample</h2>
+
+@Html.Partial("_MyPartialView", Model)
+@{Html.RenderPartial("_MyPartialView", Model);}
