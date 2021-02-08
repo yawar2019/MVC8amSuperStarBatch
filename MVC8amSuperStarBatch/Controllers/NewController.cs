@@ -299,5 +299,62 @@ namespace MVC8amSuperStarBatch.Controllers
         {
             return File("~/Web.config", "application/xml", "Web.config");
         }
+
+
+        public JsonResult GetJsonData()
+        {
+
+            List<EmployeeModel> listemp = new List<EmployeeModel>();
+
+
+            EmployeeModel emp = new EmployeeModel();
+            emp.EmpId = 1;
+            emp.EmpName = "Ritu";
+            emp.EmpSalary = 245670;
+
+            EmployeeModel emp1 = new EmployeeModel();
+            emp1.EmpId = 2;
+            emp1.EmpName = "Rahim";
+            emp1.EmpSalary = 348474;
+
+            EmployeeModel emp2 = new EmployeeModel();
+            emp2.EmpSalary = 737332;
+            emp2.EmpId = 3;
+            emp2.EmpName = "Vinod";
+
+            EmployeeModel emp3 = new EmployeeModel();
+            emp3.EmpId = 3;
+            emp3.EmpName = "Raveeja";
+            emp3.EmpSalary = 837332;
+
+            listemp.Add(emp);
+            listemp.Add(emp1);
+            listemp.Add(emp2);
+            listemp.Add(emp3);
+
+
+
+
+            return Json(listemp,JsonRequestBehavior.AllowGet);
+
+
+        }
+
+        public ContentResult getContent(int? id)
+        {
+            if (id == 1)
+            {
+                return Content("Hello World");
+            }
+
+            else if (id == 2)
+            {
+                return Content("<p style=color:red>Hello World</p>");
+            }
+            else  
+            {
+                return Content("<script>alert('Hello World')</script>");
+            }
+        }
     }
 }
