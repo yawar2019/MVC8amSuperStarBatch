@@ -9,11 +9,11 @@ namespace AdoNetExample.Models
 {
     public class EmployeeContext
     {
+        SqlConnection con = new SqlConnection("Data Source=AZAM-PC\\SQLEXPRESS;Initial Catalog=Employee;Integrated Security=true;");
+
         public List<EmployeeModel> GetEmployee() {
 
-
             List<EmployeeModel> listemp = new List<EmployeeModel>();
-            SqlConnection con = new SqlConnection("Data Source=AZAM-PC\\SQLEXPRESS;Initial Catalog=Employee;Integrated Security=true;");
             SqlCommand cmd = new SqlCommand("sp_getRituEmployees",con);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -26,9 +26,21 @@ namespace AdoNetExample.Models
                 emp.EmpName = Convert.ToString(dr[1]);
                 emp.EmpSalary = Convert.ToInt32(dr[2]);
                 listemp.Add(emp);
-
             }
             return listemp;
         }
+
+        public int SaveEmployee(string EmpName,int EmpSalary)
+        {
+            SqlCommand cmd = new SqlCommand("sp_insertRituEmployees", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            con.Open();
+            cmd.Parameters.AddWithValue("@EmpName", EmpName);
+            cmd.Parameters.AddWithValue("@EmpSalary", EmpSalary);
+            int i = cmd.ExecuteNonQuery();
+            con.Close();
+            return i;
+        }
+
     }
 }
